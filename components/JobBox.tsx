@@ -13,11 +13,11 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
   return (
     <MotionFlex
       mx="auto"
-      my="5"
+      mb="5"
       backgroundColor="white"
       shadow="md"
       p="4"
-      maxW={{ sm: "85%", lg: "1200px" }}
+      maxW={{ sm: "90%", lg: "1200px" }}
       cursor="pointer"
       alignItems="center"
       whileTap={{ scale: 0.9 }}

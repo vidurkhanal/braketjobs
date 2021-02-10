@@ -15,6 +15,14 @@ interface homeProps {
 const Home: FC<homeProps> = ({ jobs }) => {
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
+      <Box
+        backgroundImage={{
+          sm: "url('./images/bg-header-mobile.svg')",
+          lg: "url('./images/bg-header-desktop.svg')",
+        }}
+        h="15vh"
+        backgroundSize={{ sm: "cover", lg: "contain" }}
+      />
       {jobs.map((job) => (
         <JobBox key={job.id} job={job} />
       ))}
