@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Head from "next/head";
 import { sampleData } from "../utils/types";
+import { useRouter } from "next/router";
 
 interface homeProps {
   jobs: sampleData;
@@ -12,16 +13,8 @@ interface homeProps {
 }
 
 const Home: FC<homeProps> = ({ jobs }) => {
-  let hostname: "localhost" | string =
-    typeof window !== "undefined" && window.location.hostname
-      ? window.location.hostname
-      : "";
-
-  if (hostname === "localhost") {
-    hostname = hostname + ":3000";
-  }
-
-  console.log(hostname);
+  const router = useRouter();
+  console.log(router.basePath);
 
   return (
     <div>
