@@ -1,10 +1,10 @@
+import { Box } from "@chakra-ui/react";
 import { FC } from "react";
-import Head from "next/head";
+import { JobBox } from "../components/JobBox";
 import { sampleData } from "../utils/types";
-import { useRouter } from "next/router";
 
 interface homeProps {
-  jobs: sampleData;
+  jobs: Array<sampleData>;
   req?: {
     headers: {
       host: string;
@@ -13,20 +13,12 @@ interface homeProps {
 }
 
 const Home: FC<homeProps> = ({ jobs }) => {
-  const router = useRouter();
-  console.log(router.basePath);
-
   return (
-    <div>
-      <Head>
-        <title>Braket Jobs</title>
-        <link
-          rel="shortcut icon"
-          href="/images/favicon-32x32.png"
-          type="image/x-icon"
-        />
-      </Head>
-    </div>
+    <Box backgroundColor="hsl(180, 52%, 96%)">
+      {jobs.map((job) => (
+        <JobBox key={job.id} job={job} />
+      ))}
+    </Box>
   );
 };
 
