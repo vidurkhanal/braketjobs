@@ -1,62 +1,66 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { sampleData } from "../utils/types";
-import Image from "next/image";
-import { MotionFlex } from "./MotionElems";
+import { HighlightedText } from "./HighlightedText";
+import moment from "moment";
+import { time } from "console";
 
 interface JobBoxProps {
   job: sampleData;
 }
 
-const dotRemover = (word: string) => word.slice(1, word.length);
-
 export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
+  const time_diff = moment(job.created_at).toNow();
+  const time_ago = time_diff.slice(3, time_diff.length);
   return (
-    <MotionFlex
+    <Flex
       mx="auto"
-      mb="5"
+      mb={["20", "20", "20", "5"]}
       backgroundColor="white"
       shadow="md"
       p="4"
-      maxW={{ sm: "90%", lg: "1200px" }}
+      maxW="1200px"
       cursor="pointer"
       alignItems="center"
-      whileTap={{ scale: 0.9 }}
+      justifyContent="space-between"
+      flexDirection={["row-reverse", "row-reverse", "row"]}
+      // @ts-ignore
+      borderLeft={job.featured ? "5px solid hsl(180, 29%, 50%)" : null}
+      style={{ transition: "1ms ease" }}
     >
-      <Box>
-        <Image
-          src={dotRemover(job.logo)}
-          alt={job.company}
-          width={100}
-          height={100}
-          draggable="false"
-        />
-      </Box>
+      <Image
+        src={
+          job.company_logo
+            ? job.company_logo
+            : "https://user-images.githubusercontent.com/2346707/42724442-8fe29d28-87b5-11e8-86fc-189c889c3436.png"
+        }
+        alt={job.company}
+        draggable="false"
+        height="20"
+        width="20"
+        objectFit="contain"
+        marginTop={["-50px", "-50px", "-50px", "initial"]}
+      />
+
       <Flex
-        ml="4"
-        w="100%"
+        width="85%"
+        pl="4"
+        mr="2"
         alignItems={{ sm: "initial", md: "initial", lg: "center" }}
         justifyContent={{ lg: "space-between" }}
-        direction={{ sm: "column", md: "column", lg: "row" }}
+        display={{ lg: "flex", sm: "block", md: "block" }}
       >
         <Box>
-          <Flex alignItems="center">
-            <Text color="#5BA4A4">{job.company}</Text>
-            {job.new && (
-              <Text
-                ml={2}
-                px={2}
-                fontWeight="bold"
-                borderRadius="xl"
-                color="white"
-                backgroundColor="hsl(180, 29%, 50%)"
-                style={{ display: "inline" }}
-                userSelect="none"
-                display="inline"
-              >
-                New!
-              </Text>
-            )}
-            {job.featured && (
+          <Flex flexDirection="row">
+            <Text
+              color="#5BA4A4"
+              fontWeight="700"
+              as="a"
+              href={job.company_url ? job.company_url : "/"}
+              target="_blank"
+            >
+              {job.company}
+            </Text>
+            {/* {job.featured && (
               <Text
                 ml={2}
                 px={2}
@@ -70,35 +74,22 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
               >
                 Featured
               </Text>
-            )}
+            )} */}
           </Flex>
-          <Text fontWeight="700" className="font-semibold">
-            {job.position}
+          <Text
+            fontWeight="700"
+            className="font-semibold"
+            _hover={{ color: "hsl(180, 29%, 50%)" }}
+          >
+            {job.title}
           </Text>
-          <Text color="gray.500">
-            {job.postedAt} &middot; {job.contract} &middot; {job.location}
-          </Text>
+          <Text color="gray.500">Job Posted {time_ago} ago.</Text>
         </Box>
         <Box>
-          {job.tools.map((tool) => {
-            return (
-              <Text
-                key={tool.length}
-                mr={4}
-                p={1}
-                fontWeight="bold"
-                borderRadius="1xl"
-                color="hsl(180, 29%, 50%)"
-                backgroundColor="hsl(180, 31%, 95%)"
-                style={{ display: "inline" }}
-                userSelect="none"
-              >
-                {tool}
-              </Text>
-            );
-          })}
+          {HighlightedText(job.type)}
+          {HighlightedText(job.location)}
         </Box>
       </Flex>
-    </MotionFlex>
+    </Flex>
   );
 };

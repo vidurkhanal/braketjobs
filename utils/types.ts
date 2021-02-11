@@ -1,15 +1,13 @@
 export type sampleData = {
-  id: number;
+  id: string;
+  type: string;
+  url: string | null;
+  created_at: string;
   company: string;
-  logo: string;
-  new: boolean;
-  featured: boolean;
-  position: string;
-  role: string;
-  level: string;
-  postedAt: string;
-  contract: string;
+  company_url: string | null;
   location: string;
-  languages: Array<string>;
-  tools: Array<string>;
+  title: string;
+  description: string;
+  how_to_apply: string;
+  company_logo: string | null;
 };
