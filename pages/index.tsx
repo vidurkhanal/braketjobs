@@ -31,12 +31,14 @@ const Home: FC<homeProps> = ({ jobs }) => {
   );
 };
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    __prod__
-      ? `https://cors-anywhere.herokuapp.com/https://braketjobs.vercel.app/api/listingdata`
-      : `http://localhost:3000/api/listingdata`
-  );
+export async function getServerSideProps({ req }) {
+  let protocol = "https:";
+  let host = req ? req.headers.host : window.location.hostname;
+  if (host.indexOf("localhost") > -1) {
+    protocol = "http:";
+  }
+
+  const res = await fetch(`${protocol}//${host}/api/listingdata`);
   const jobs: Array<sampleData> = await res.json();
 
   if (!jobs) {
