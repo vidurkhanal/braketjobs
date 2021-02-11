@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { FC } from "react";
 import { JobBox } from "../components/JobBox";
+import { __prod__ } from "../utils/constants";
 import { sampleData } from "../utils/types";
 
 interface homeProps {
@@ -31,7 +32,11 @@ const Home: FC<homeProps> = ({ jobs }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/listingdata`);
+  const res = await fetch(
+    __prod__
+      ? `https://cors-anywhere.herokuapp.com/https://braketjobs.vercel.app/api/listingdata`
+      : `http://localhost:3000/api/listingdata`
+  );
   const jobs: Array<sampleData> = await res.json();
 
   if (!jobs) {
