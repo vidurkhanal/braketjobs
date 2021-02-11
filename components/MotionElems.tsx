@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Box, Flex, forwardRef, Link, Text } from "@chakra-ui/react";
 import { motion, isValidMotionProp } from "framer-motion";
 
