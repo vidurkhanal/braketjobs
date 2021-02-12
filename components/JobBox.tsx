@@ -8,8 +8,8 @@ interface JobBoxProps {
 }
 
 export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
-  const time_diff = moment(job.created_at).toNow();
-  const time_ago = time_diff.slice(3, time_diff.length);
+  const time_diff = moment(job.created_at).fromNow();
+
   return (
     <Link href={`/jobs/${job.id}`} style={{ textDecoration: "none" }}>
       <Flex
@@ -59,7 +59,7 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
               >
                 {job.company}
               </Text>
-              {time_ago.includes("a day") || time_ago.includes("hour") ? (
+              {time_diff.includes("a day") || time_diff.includes("hour") ? (
                 <Text
                   ml={2}
                   px={2}
@@ -74,6 +74,21 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
                   New!
                 </Text>
               ) : null}
+              {time_diff.includes("minutes") ? (
+                <Text
+                  ml={2}
+                  px={2}
+                  fontWeight="bold"
+                  borderRadius="xl"
+                  color="white"
+                  backgroundColor="Black"
+                  style={{ display: "inline" }}
+                  userSelect="none"
+                  display="inline"
+                >
+                  Hot!
+                </Text>
+              ) : null}
             </Flex>
             <Text
               fontWeight="700"
@@ -84,7 +99,7 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
             >
               {job.title}
             </Text>
-            <Text color="gray.500">Job Posted {time_ago} ago.</Text>
+            <Text color="gray.500">Job Posted {time_diff} .</Text>
           </Box>
           <Box>
             {HighlightedText(job.type)}
