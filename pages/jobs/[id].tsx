@@ -117,13 +117,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { id: string } }) {
   // Fetch necessary data for the blog post using params.id
   const res = await fetch(
-    `https://jobs.github.com/positions.json?description=code`
+    `https://jobs.github.com/positions/${params.id}.json`
   );
 
-  const jobs: Array<sampleData> = await res.json();
-  const job = jobs.filter((job) => job.id === params.id);
+  const job: sampleData = await res.json();
+
   return {
-    props: { job: job[0] },
+    props: { job },
   };
 }
 
