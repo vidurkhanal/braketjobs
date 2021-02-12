@@ -1,14 +1,16 @@
 import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
 import { sampleData } from "../utils/types";
 import { HighlightedText } from "./HighlightedText";
-import moment from "moment";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 interface JobBoxProps {
   job: sampleData;
 }
 
 export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
-  const time_diff = moment(job.created_at).fromNow();
+  dayjs.extend(relativeTime);
+  const time_diff = dayjs(job.created_at).fromNow();
 
   return (
     <Link href={`/jobs/${job.id}`} style={{ textDecoration: "none" }}>

@@ -4,7 +4,6 @@ import { GraphicalBox } from "../components/GraphicalBox";
 import { JobBox } from "../components/JobBox";
 import { __prod__ } from "../utils/constants";
 import { sampleData } from "../utils/types";
-import moment from "moment";
 import { NavBar } from "../components/NavBar";
 import { TopGraphicalBox } from "../components/TopGraphicalBox";
 import { Footer } from "../components/Footer";
