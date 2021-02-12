@@ -17,6 +17,10 @@ const IndividualJob: React.FC<individualJobs> = ({ job }) => {
         <title>
           {job.title} at {job.company}
         </title>
+        <meta
+          name="description"
+          content={`${job.title} needed at ${job.company} . ${job.description}`}
+        />
       </Head>
       <NavBar />
       <TopGraphicalBox />
