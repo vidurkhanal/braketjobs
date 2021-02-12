@@ -14,10 +14,6 @@ interface homeProps {
 }
 
 const Home: FC<homeProps> = ({ jobs }) => {
-  // const [filteredJobs, setFilteredJobs] = useState<sampleData[]>(jobs);
-  // // const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  // // console.log(getAllJobsById());
-
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <NavBar />
@@ -54,7 +50,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { jobs }, // will be passed to the page component as props
+    props: { jobs },
   };
 }
 

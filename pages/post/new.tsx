@@ -8,7 +8,7 @@ const New: React.FC<NewProps> = ({}) => {
   return (
     <Box h="100vh" w="100vw" display="grid" placeItems="center">
       <Head>
-        <title>Coming Soon !!</title>
+        <title>Job Posting Available Soon!!</title>
       </Head>
       <a href="/">
         <Image

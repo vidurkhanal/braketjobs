@@ -15,7 +15,7 @@ const IndividualJob: React.FC<individualJobs> = ({ job }) => {
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Head>
         <title>
-          {job.title} at {job.company}
+          {job.title} for {job.company}
         </title>
         <meta
           name="description"
