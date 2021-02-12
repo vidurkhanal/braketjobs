@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { background, ChakraProvider, CSSReset } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }: any) {
   return (

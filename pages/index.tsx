@@ -1,45 +1,47 @@
-import { Box } from "@chakra-ui/react";
-import { FC, useState } from "react";
+import { Box, Text } from "@chakra-ui/react";
+import { FC } from "react";
+import { GraphicalBox } from "../components/GraphicalBox";
 import { JobBox } from "../components/JobBox";
 import { __prod__ } from "../utils/constants";
 import { sampleData } from "../utils/types";
+import moment from "moment";
+import { NavBar } from "../components/NavBar";
+import { TopGraphicalBox } from "../components/TopGraphicalBox";
+import { Footer } from "../components/Footer";
 
 interface homeProps {
   jobs: Array<sampleData>;
 }
 
 const Home: FC<homeProps> = ({ jobs }) => {
-  const [filteredJobs, setFilteredJobs] = useState<sampleData[]>(jobs);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  // const [filteredJobs, setFilteredJobs] = useState<sampleData[]>(jobs);
+  // // const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  // // console.log(getAllJobsById());
 
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
-      <Box
-        backgroundImage={[
-          "url('./images/bg-header-mobile.svg')",
-          "url('./images/bg-header-mobile.svg')",
-          "url('./images/bg-header-desktop.svg')",
-        ]}
-        h="130px"
-        backgroundColor="hsl(180, 29%, 50%)"
-        mb={20}
-        backgroundPosition="center"
-        backgroundSize={{ sm: "cover", md: "cover", lg: "contain" }}
-      ></Box>
-      {filteredJobs.map((job) => (
+      <NavBar />
+      <TopGraphicalBox />
+      <Box maxW="1200px" mx="auto">
+        <Text
+          marginBottom={5}
+          width="max-content"
+          fontFamily="monospace"
+          fontWeight="bold"
+          fontSize="2xl"
+        >
+          Today's Top Jobs
+        </Text>
+      </Box>
+      {jobs.map((job) => (
         <JobBox key={job.id} job={job} />
       ))}
+      <Footer />
     </Box>
   );
 };
 
-export async function getServerSideProps({ req }: any) {
-  let protocol = "https:";
-  let host = req ? req.headers.host : window.location.hostname;
-  if (host.indexOf("localhost") > -1) {
-    protocol = "http:";
-  }
-
+export async function getStaticProps() {
   const res = await fetch(
     `https://jobs.github.com/positions.json?page=1&search=code`
   );
