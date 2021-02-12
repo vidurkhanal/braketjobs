@@ -17,7 +17,6 @@ export const GraphicalBox: React.FC<GraphicalBoxProps> = ({
       ]}
       h="max-content"
       minH="130px"
-      w="100%"
       backgroundColor="hsl(180, 29%, 50%)"
       mb={mb}
       mt={mb == 0 ? 20 : 0}

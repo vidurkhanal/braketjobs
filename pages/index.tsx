@@ -16,22 +16,24 @@ interface homeProps {
 const Home: FC<homeProps> = ({ jobs }) => {
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
-      <NavBar />
-      <TopGraphicalBox />
-      <Box maxW="1200px" mx="auto">
-        <Text
-          marginBottom={5}
-          width="max-content"
-          fontFamily="monospace"
-          fontWeight="bold"
-          fontSize="2xl"
-        >
-          Today's Top Jobs
-        </Text>
+      <Box>
+        <NavBar />
+        <TopGraphicalBox />
+        <Box maxW="1200px" mx="auto">
+          <Text
+            marginBottom={5}
+            width="max-content"
+            fontFamily="monospace"
+            fontWeight="bold"
+            fontSize="2xl"
+          >
+            Today's Top Jobs
+          </Text>
+        </Box>
+        {jobs.map((job) => (
+          <JobBox key={job.id} job={job} />
+        ))}
       </Box>
-      {jobs.map((job) => (
-        <JobBox key={job.id} job={job} />
-      ))}
       <Footer />
     </Box>
   );
@@ -39,7 +41,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
 
 export async function getStaticProps() {
   const res = await fetch(
-    `https://jobs.github.com/positions.json?page=1&search=code`
+    `https://jobs.github.com/positions.json?description=code`
   );
   const jobs: Array<sampleData> = await res.json();
 
