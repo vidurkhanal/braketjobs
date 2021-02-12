@@ -95,7 +95,7 @@ const IndividualJob: React.FC<individualJobs> = ({ job }) => {
 export async function getStaticPaths() {
   // Return a list of possible value for id
   const res = await fetch(
-    `https://jobs.github.com/positions.json?page=1&search=code`
+    `https://jobs.github.com/positions.json?description=code`
   );
 
   const jobs: Array<sampleData> = await res.json();
@@ -117,7 +117,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { id: string } }) {
   // Fetch necessary data for the blog post using params.id
   const res = await fetch(
-    `https://jobs.github.com/positions.json?page=1&search=code`
+    `https://jobs.github.com/positions.json?description=code`
   );
 
   const jobs: Array<sampleData> = await res.json();
