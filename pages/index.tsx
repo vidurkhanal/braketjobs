@@ -51,7 +51,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { jobs },
+    props: { jobs: jobs.slice(0, 30) },
   };
 }
 

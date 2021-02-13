@@ -100,7 +100,7 @@ export async function getStaticPaths() {
 
   const jobs: Array<sampleData> = await res.json();
 
-  const paths = jobs.map((job) => {
+  const paths = jobs.slice(0, 30).map((job) => {
     return {
       params: {
         id: job.id,
