@@ -1,6 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
 import { FC } from "react";
-import { GraphicalBox } from "../components/GraphicalBox";
 import { JobBox } from "../components/JobBox";
 import { __prod__ } from "../utils/constants";
 import { sampleData } from "../utils/types";

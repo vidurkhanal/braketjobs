@@ -5,12 +5,12 @@ import { TopGraphicalBox } from "../../components/TopGraphicalBox";
 import Head from "next/head";
 import { anchorExtractor } from "../../utils/anchorExtractor";
 import { Footer } from "../../components/Footer";
+import { NextPage } from "next";
 
-interface individualJobs {
-  job: sampleData;
-}
-
-const IndividualJob: React.FC<individualJobs> = ({ job }) => {
+const IndividualJob: NextPage<{ id: string; job: sampleData }> = ({
+  id,
+  job,
+}) => {
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Head>
@@ -92,39 +92,14 @@ const IndividualJob: React.FC<individualJobs> = ({ job }) => {
   );
 };
 
-export async function getStaticPaths() {
-  // Return a list of possible value for id
-  const res = await fetch(
-    `https://jobs.github.com/positions.json?description=code`
-  );
-
-  const jobs: Array<sampleData> = await res.json();
-
-  const paths = jobs.slice(0, 30).map((job) => {
-    return {
-      params: {
-        id: job.id,
-      },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: { params: { id: string } }) {
-  // Fetch necessary data for the blog post using params.id
-  const res = await fetch(
-    `https://jobs.github.com/positions/${params.id}.json`
-  );
+IndividualJob.getInitialProps = async ({ query }) => {
+  const res = await fetch(`https://jobs.github.com/positions/${query.id}.json`);
 
   const job: sampleData = await res.json();
-
   return {
-    props: { job },
+    id: query.id as string,
+    job: job,
   };
-}
+};
 
 export default IndividualJob;
