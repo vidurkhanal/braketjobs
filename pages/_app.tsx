@@ -1,7 +1,27 @@
 import Head from "next/head";
 import { background, ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import * as gtag from "../lib/gtag";
 
-function MyApp({ Component, pageProps }: any) {
+const isProduction = process.env.NODE_ENV === "production";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      /* invoke analytics function only for production */
+      if (isProduction) gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+  // eslint-disable-next-line react/jsx-props-no-spreading
+
   return (
     <ChakraProvider>
       <CSSReset />
