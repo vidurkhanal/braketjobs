@@ -8,6 +8,10 @@ function MyApp({ Component, pageProps }: any) {
       <Head>
         <title>Braket Jobs</title>
         <meta name="viewport" content="width=device-width ,initial-scale=1" />
+        <meta
+          name="google-site-verification"
+          content="m8QG7IOkcY9xWXwH1Un9rUvlTL4XWDNvEVweC-dQcYg"
+        />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="robots" content="noindex" />
         <meta
