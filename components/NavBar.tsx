@@ -23,13 +23,15 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
         </a>
         <Box paddingY="2">
           <Text
-            color="green.500"
-            border="1px solid green"
+            color="red.500"
+            border="1px solid red"
             borderRadius="20px"
             paddingX="2"
             userSelect="none"
+            cursor="progress"
+            _hover={{ color: "white", backgroundColor: "red" }}
           >
-            Beta
+            Alpha
           </Text>
         </Box>
       </Flex>

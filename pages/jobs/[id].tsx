@@ -7,10 +7,7 @@ import { anchorExtractor } from "../../utils/anchorExtractor";
 import { Footer } from "../../components/Footer";
 import { NextPage } from "next";
 
-const IndividualJob: NextPage<{ id: string; job: sampleData }> = ({
-  id,
-  job,
-}) => {
+const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Head>
@@ -24,25 +21,65 @@ const IndividualJob: NextPage<{ id: string; job: sampleData }> = ({
       </Head>
       <NavBar />
       <TopGraphicalBox />
-      <Flex paddingX="20">
+      <Flex paddingX={["5", "5", "20"]}>
         <Box
-          paddingX="20"
+          paddingX={["5", "5", "20"]}
           paddingY="5"
           background="white"
           shadow="xl"
-          flex="0.6"
+          flex={["1", "1", "0.6"]}
+          width={["90%", "90%", "initial"]}
         >
-          <Text
-            as="h1"
-            fontSize="5xl"
-            fontWeight="bold"
-            color="hsl(180, 29%, 50%)"
-          >
-            {job.title}
-          </Text>
-          <Box dangerouslySetInnerHTML={{ __html: job.description }} />
+          <Flex flexDirection="column">
+            <Text
+              as="h1"
+              fontSize="4xl"
+              fontWeight="bold"
+              color="hsl(180, 29%, 50%)"
+            >
+              {job.title}
+            </Text>
+            <Text as="h3" fontSize="xl" color="hsl(180, 29%, 50%)">
+              {job.location}
+            </Text>
+            <Text as="h3" fontSize="xl" color="hsl(180, 29%, 50%)">
+              {job.company}
+            </Text>
+            <Flex mt="5" display={["flex", "flex", "none"]}>
+              <Button mr="7" colorScheme="orange">
+                <Link
+                  href={anchorExtractor(job.how_to_apply)}
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  Apply Now
+                </Link>
+              </Button>
+              <Button colorScheme="linkedin">
+                <Link
+                  href={
+                    job.company_url
+                      ? job.company_url
+                      : `/redirect/to/${job.company_url}`
+                  }
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  Visit Us
+                </Link>
+              </Button>
+            </Flex>
+            <br />
+            <hr />
+          </Flex>
+          <Flex direction="column" mt="5">
+            <Text as="h2" fontWeight="600" fontSize="2xl" mb="5">
+              Full Job Description
+            </Text>
+            <Box dangerouslySetInnerHTML={{ __html: job.description }} />
+          </Flex>
         </Box>
-        <Box flex="0.3" paddingX="20">
+        <Box flex="0.3" paddingX="20" display={["none", "none", "block"]}>
           <Flex
             background="white"
             width="100%"
