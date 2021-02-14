@@ -128,7 +128,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
           </Flex>
         </Box>
       </Flex>
-      <Footer />
+      <Footer alter={false} />
     </Box>
   );
 };
