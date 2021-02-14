@@ -24,6 +24,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
             fontFamily="monospace"
             fontWeight="bold"
             fontSize="2xl"
+            paddingLeft={["5", "5", "initial"]}
           >
             Today's Top Jobs
           </Text>

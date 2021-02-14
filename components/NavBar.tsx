@@ -36,8 +36,8 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
         </Box>
       </Flex>
       <Box px="10px">
-        <Button colorScheme="teal">
-          <Text as="a" href="/post/new/">
+        <Button colorScheme="teal" cursor="progress">
+          <Text as="a" href="/post/new/" cursor="progress">
             Post A Job
           </Text>
         </Button>
