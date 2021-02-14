@@ -33,7 +33,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
           <JobBox key={job.id} job={job} />
         ))}
       </Box>
-      <Footer />
+      <Footer alter={false} />
     </Box>
   );
 };
