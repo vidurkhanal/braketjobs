@@ -1,58 +1,80 @@
-import { Box, Text } from "@chakra-ui/react";
-import { FC } from "react";
-import { JobBox } from "../components/JobBox";
-import { __prod__ } from "../utils/constants";
-import { sampleData } from "../utils/types";
+import { Box, Flex, Image, Text, Button } from "@chakra-ui/react";
+import { ContactMe } from "../components/ContactMe";
 import { NavBar } from "../components/NavBar";
-import { TopGraphicalBox } from "../components/TopGraphicalBox";
-import { Footer } from "../components/Footer";
 
-interface homeProps {
-  jobs: Array<sampleData>;
-}
+interface devProps {}
 
-const Home: FC<homeProps> = ({ jobs }) => {
+const dev: React.FC<devProps> = ({}) => {
   return (
-    <Box backgroundColor="hsl(180, 52%, 96%)">
+    <Box backgroundColor="#EAF3F9" minH="100vh" w="100vw" position="relative">
       <Box>
         <NavBar />
-        <TopGraphicalBox />
-        <Box maxW="1200px" mx="auto">
-          <Text
-            marginBottom={5}
-            width="max-content"
-            fontFamily="monospace"
-            fontWeight="bold"
-            fontSize="2xl"
-            paddingLeft={["5", "5", "initial"]}
+        <Flex
+          alignItems="center"
+          flexDirection={["column-reverse", "column-reverse", "row"]}
+        >
+          <Flex
+            alignItems="center"
+            flex="0.5"
+            pl={["5", "5", "10"]}
+            minH="80vh"
+            mb="5vh"
           >
-            Today's Top Jobs
-          </Text>
+            <Box>
+              <Text
+                as="h3"
+                color="gray.500"
+                fontWeight="extrabold"
+                fontSize="3xl"
+              >
+                Braket Jobs
+              </Text>
+              <Text
+                as="h1"
+                color="#2B468A"
+                fontSize="5xl"
+                fontWeight="extrabold"
+              >
+                A Job Search Tool For Developers
+              </Text>
+              <Text
+                as="h3"
+                color="gray.500"
+                fontWeight="bold"
+                fontSize="l"
+                mr="20%"
+              >
+                Braket Jobs is a job searching tool that crawls through
+                different job portals and displays vacancies spread across sites
+                in same page.
+              </Text>
+              <Box mt="10">
+                <Button colorScheme="teal">
+                  <a href="/jobs">Start Searching</a>
+                </Button>
+              </Box>
+            </Box>
+          </Flex>
+          <Box flex="0.5">
+            <Image
+              src="/images/home-image.png"
+              alt="Braket Jobs Home Vector"
+              draggable="false"
+            />
+          </Box>
+        </Flex>
+        <Box>
+          <ContactMe />
+          <Box color="white" background="green.500" textAlign="center">
+            Special thanks to{" "}
+            <a href="https://www.freepik.com/vectors/people">
+              People vector created by pch.vector - www.freepik.com
+            </a>
+          </Box>
         </Box>
-        {jobs.map((job) => (
-          <JobBox key={job.id} job={job} />
-        ))}
       </Box>
-      <Footer />
     </Box>
   );
 };
 
-export async function getStaticProps() {
-  const res = await fetch(
-    `https://jobs.github.com/positions.json?description=code`
-  );
-  const jobs: Array<sampleData> = await res.json();
-
-  if (!jobs) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: { jobs: jobs },
-  };
-}
-
-export default Home;
+export default dev;

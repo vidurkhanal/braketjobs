@@ -2,24 +2,29 @@ import { Box } from "@chakra-ui/react";
 
 interface GraphicalBoxProps {
   mb: number;
+  alter: boolean;
 }
 
 export const GraphicalBox: React.FC<GraphicalBoxProps> = ({
   children,
   mb = 20,
+  alter = false,
 }) => {
   return (
     <Box
-      backgroundImage={[
-        "url('/images/bg-header-mobile.svg')",
-        "url('/images/bg-header-mobile.svg')",
-        "url('/images/bg-header-desktop.svg')",
-      ]}
+      backgroundImage={
+        !alter
+          ? [
+              "url('/images/bg-header-mobile.svg')",
+              "url('/images/bg-header-mobile.svg')",
+              "url('/images/bg-header-desktop.svg')",
+            ]
+          : "null"
+      }
       h="max-content"
       minH="130px"
-      backgroundColor="hsl(180, 29%, 50%)"
+      backgroundColor={!alter ? "hsl(180, 29%, 50%)" : "#3c4766"}
       mb={mb}
-      mt={mb == 0 ? 20 : 0}
       backgroundPosition="center"
       backgroundSize={{ sm: "cover", md: "cover", lg: "contain" }}
       display="grid"

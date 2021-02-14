@@ -21,7 +21,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
       </Head>
       <NavBar />
       <TopGraphicalBox />
-      <Flex paddingX={["5", "5", "20"]}>
+      <Flex paddingX={["5", "5", "20"]} marginBottom="20">
         <Box
           paddingX={["5", "5", "20"]}
           paddingY="5"
@@ -50,6 +50,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
                 <Link
                   href={anchorExtractor(job.how_to_apply)}
                   target="_blank"
+                  rel="noopener"
                   style={{ textDecoration: "none" }}
                 >
                   Apply Now
@@ -62,6 +63,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
                       ? job.company_url
                       : `/redirect/to/${job.company_url}`
                   }
+                  rel="noopener"
                   target="_blank"
                   style={{ textDecoration: "none" }}
                 >
@@ -105,6 +107,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
                       : `/redirect/to/${job.company_url}`
                   }
                   target="_blank"
+                  rel="noopener"
                   style={{ textDecoration: "none" }}
                 >
                   Visit Us
@@ -115,6 +118,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
                 <Link
                   href={anchorExtractor(job.how_to_apply)}
                   target="_blank"
+                  rel="noopener"
                   style={{ textDecoration: "none" }}
                 >
                   Apply Now

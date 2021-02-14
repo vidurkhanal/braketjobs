@@ -2,13 +2,15 @@ import { GraphicalBox } from "./GraphicalBox";
 import { Text } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-interface FooterProps {}
+interface FooterProps {
+  alter: boolean;
+}
 
-export const Footer: React.FC<FooterProps> = ({}) => {
+export const Footer: React.FC<FooterProps> = ({ alter = false }) => {
   let now = dayjs();
   let current_year = now.year();
   return (
-    <GraphicalBox mb={0}>
+    <GraphicalBox mb={0} alter={alter}>
       <Text color="white" fontWeight="700" textAlign="center">
         &#169;{current_year} Braket Jobs
         <br />
