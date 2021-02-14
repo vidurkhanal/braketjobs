@@ -18,7 +18,6 @@ export const Footer: React.FC<FooterProps> = ({ alter = false }) => {
         <Text as="a" href="mailto:vidur1@outlook.com?subject=Hello">
           Vidur Khanal
         </Text>{" "}
-        using Next.Js and ❤️
       </Text>
     </GraphicalBox>
   );

@@ -36,8 +36,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="robots" content="noindex" />
         <meta
           name="description"
-          content="Braket Jobs is a moden and elegant job hunting site made by developers for developers. Currently, it is in developmental stage and new features are being added on a regular basis. The initial intentions for the site was to create a trivago like site for Job hunting. Currentl braket Jobs is not acccepting job posting."
+          content="Braket Jobs is a job hunting site made by developers for developers. Currently, it is in developmental stage and new features are being added on a regular basis. The initial intentions for the site was to create a trivago like site for Job hunting. Currentl braket Jobs is not acccepting job posting."
         />
+        <meta property="og:image" content="https://braketjobs.vercel.app/images/logo.png" />
+
         <link
           rel="shortcut icon"
           href="/images/favicon-32x32.png"
