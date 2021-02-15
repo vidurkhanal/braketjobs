@@ -38,7 +38,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(
     `https://jobs.github.com/positions.json?description=code`
   );
