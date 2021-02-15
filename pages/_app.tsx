@@ -27,7 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CSSReset />
       <Head>
         <title>Braket Jobs</title>
-        <meta name="viewport" content="width=device-width ,initial-scale=1" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
         <meta
           name="google-site-verification"
           content="m8QG7IOkcY9xWXwH1Un9rUvlTL4XWDNvEVweC-dQcYg"
@@ -36,9 +41,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="robots" content="noindex" />
         <meta
           name="description"
-          content="Braket Jobs is a job hunting site made by developers for developers. Currently, it is in developmental stage and new features are being added on a regular basis. The initial intentions for the site was to create a trivago like site for Job hunting. Currentl braket Jobs is not acccepting job posting."
+          content="Braket Jobs is a job hunting site made by developers for developers. Currently, it is in developmental stage and new features are being added on a regular basis. The initial intentions for the site was to create a trivago like site for Job hunting. Currently braket Jobs is not acccepting job posting."
         />
-        <meta property="og:image" content="https://braketjobs.vercel.app/images/logo.png" />
+        <meta
+          property="og:image"
+          content="https://braketjobs.vercel.app/images/logo.png"
+        />
+        <link rel="manifest" href="/manifest.json" />
 
         <link
           rel="shortcut icon"
