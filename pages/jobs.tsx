@@ -6,6 +6,7 @@ import { sampleData } from "../utils/types";
 import { NavBar } from "../components/NavBar";
 import { TopGraphicalBox } from "../components/TopGraphicalBox";
 import { Footer } from "../components/Footer";
+import { v4 } from "uuid";
 
 interface homeProps {
   jobs: Array<sampleData>;
@@ -30,7 +31,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
           </Text>
         </Box>
         {jobs.map((job) => (
-          <JobBox key={job.id} job={job} />
+          <JobBox key={v4()} job={job} />
         ))}
       </Box>
       <Footer alter={false} />
@@ -39,9 +40,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    `https://jobs.github.com/positions.json?description=code`
-  );
+  const res = await fetch(`${process.env.HomeFetchUrl}`);
   const jobs: Array<sampleData> = await res.json();
 
   if (!jobs) {

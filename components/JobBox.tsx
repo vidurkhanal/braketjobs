@@ -52,13 +52,7 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
         >
           <Box>
             <Flex flexDirection="row">
-              <Text
-                color="#5BA4A4"
-                fontWeight="700"
-                as="a"
-                href={job.company_url ? job.company_url : "/"}
-                target="_blank"
-              >
+              <Text color="#5BA4A4" fontWeight="700">
                 {job.company}
               </Text>
               {time_diff.includes("a day") || time_diff.includes("hour") ? (
@@ -96,8 +90,6 @@ export const JobBox: React.FC<JobBoxProps> = ({ job }) => {
               fontWeight="700"
               className="font-semibold"
               _hover={{ color: "hsl(180, 29%, 50%)" }}
-              as="a"
-              href={`/jobs/${job.id}`}
             >
               {job.title}
             </Text>

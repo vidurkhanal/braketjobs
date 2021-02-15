@@ -134,7 +134,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
 };
 
 IndividualJob.getInitialProps = async ({ query }) => {
-  const res = await fetch(`https://jobs.github.com/positions/${query.id}.json`);
+  const res = await fetch(`${process.env.JobFetchUrl}${query.id}.json`);
 
   const job: sampleData = await res.json();
   return {
