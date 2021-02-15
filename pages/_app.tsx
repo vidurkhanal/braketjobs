@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CSSReset />
       <Head>
         <title>Braket Jobs</title>
-        <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
