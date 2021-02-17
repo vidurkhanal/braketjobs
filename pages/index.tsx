@@ -16,7 +16,7 @@ const dev: React.FC<devProps> = ({}) => {
           <Flex
             alignItems="center"
             flex="0.5"
-            pl={["5", "5", "10"]}
+            pl={["5", "5", "20"]}
             minH="80vh"
             mb="5vh"
           >
@@ -49,9 +49,9 @@ const dev: React.FC<devProps> = ({}) => {
                 in same page.
               </Text>
               <Box mt="10">
-                <Button colorScheme="teal">
-                  <a href="/jobs">Start Searching</a>
-                </Button>
+                <a href="/jobs">
+                  <Button colorScheme="teal">Start Searching</Button>
+                </a>
               </Box>
             </Box>
           </Flex>
