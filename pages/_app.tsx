@@ -27,6 +27,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           property="og:image"
           content="https://braketjobs.vercel.app/images/logo.png"
         />
+        <link
+          rel="shortcut icon"
+          href="/images/favicon-32x32.png"
+          type="image/x-icon"
+        />
       </Head>
       <Component {...pageProps} />
     </ChakraProvider>
