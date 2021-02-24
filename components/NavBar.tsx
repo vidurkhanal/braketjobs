@@ -1,8 +1,10 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 
-interface NavBarProps {}
+interface NavBarProps {
+  linkTo: string;
+}
 
-export const NavBar: React.FC<NavBarProps> = ({}) => {
+export const NavBar: React.FC<NavBarProps> = ({ linkTo }) => {
   return (
     <Flex
       background="white"
@@ -12,7 +14,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
       alignItems="center"
     >
       <Flex>
-        <a href="/">
+        <a href={`${linkTo}`}>
           <Image
             src="/images/logo.png"
             alt="Braket Jobs"

@@ -19,7 +19,7 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
           content={`${job.title} needed at ${job.company} . ${job.description}`}
         />
       </Head>
-      <NavBar />
+      <NavBar linkTo="/jobs" />
       <TopGraphicalBox />
       <Flex paddingX={["5", "5", "20"]} marginBottom="20">
         <Box

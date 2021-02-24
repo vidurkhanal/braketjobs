@@ -8,7 +8,7 @@ const dev: React.FC<devProps> = ({}) => {
   return (
     <Box backgroundColor="#EAF3F9" minH="100vh" w="100vw" position="relative">
       <Box>
-        <NavBar />
+        <NavBar linkTo="/" />
         <Flex
           alignItems="center"
           flexDirection={["column-reverse", "column-reverse", "row"]}

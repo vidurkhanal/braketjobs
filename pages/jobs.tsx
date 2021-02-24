@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import { FC } from "react";
+import { useState } from "react";
 import { JobBox } from "../components/JobBox";
 import { __prod__ } from "../utils/constants";
 import { sampleData } from "../utils/types";
@@ -12,11 +12,13 @@ interface homeProps {
   jobs: Array<sampleData>;
 }
 
-const Home: FC<homeProps> = ({ jobs }) => {
+const Home: React.FC<homeProps> = ({ jobs }) => {
+  const [filteredJobs, setFilteredJobs] = useState(jobs);
+
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
-        <NavBar />
+        <NavBar linkTo="/" />
         <TopGraphicalBox />
         <Box maxW="1200px" mx="auto">
           <Text
@@ -30,7 +32,7 @@ const Home: FC<homeProps> = ({ jobs }) => {
             Today's Top Jobs
           </Text>
         </Box>
-        {jobs.map((job) => (
+        {filteredJobs.map((job) => (
           <JobBox key={v4()} job={job} />
         ))}
       </Box>

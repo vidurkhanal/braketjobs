@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+import { sampleData } from "../utils/types";
 import { GraphicalBox } from "./GraphicalBox";
 import { InputField } from "./InputField";
 
