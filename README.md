@@ -1,3 +1,3 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## GO AWAY< THIS IS PRIVATE >
+## We are currently in alpha stages. Interested contributors can [contact me](mailto:vidurkhanal@gmail.com)
