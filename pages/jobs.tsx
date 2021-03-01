@@ -29,7 +29,7 @@ const Home: React.FC<homeProps> = ({ jobs }) => {
             fontSize="2xl"
             paddingLeft={["5", "5", "initial"]}
           >
-            Today's Top Jobs
+            Top Jobs For Today ..
           </Text>
         </Box>
         {filteredJobs.map((job) => (
