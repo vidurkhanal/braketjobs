@@ -9,6 +9,7 @@ import { sampleData } from "../../utils/types";
 import { useRouter } from "next/router";
 
 const Search: NextPage<{ jobs: sampleData[] }> = ({ jobs }) => {
+  const router = useRouter();
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
