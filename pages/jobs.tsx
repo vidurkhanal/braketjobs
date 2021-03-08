@@ -19,22 +19,27 @@ const Home: React.FC<homeProps> = ({ jobs }) => {
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
         <NavBar linkTo="/" />
-        <TopGraphicalBox />
+        <Box zIndex="1" position="sticky" top="0">
+          <TopGraphicalBox />
+        </Box>
         <Box maxW="1200px" mx="auto">
           <Text
             marginBottom={5}
             width="max-content"
-            fontFamily="monospace"
+            fontFamily="heading"
             fontWeight="bold"
             fontSize="2xl"
+            color="linkedin.600"
             paddingLeft={["5", "5", "initial"]}
           >
             Top Jobs For Today ..
           </Text>
         </Box>
-        {filteredJobs.map((job) => (
-          <JobBox key={v4()} job={job} />
-        ))}
+        <Box minH={"100vh"}>
+          {filteredJobs.map((job) => (
+            <JobBox key={v4()} job={job} />
+          ))}
+        </Box>
       </Box>
       <Footer alter={false} />
     </Box>
