@@ -1,7 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
 import { useRouter } from "next/router";
-import { sampleData } from "../utils/types";
+import { useState } from "react";
 
 interface InputFieldProps {
   jobName: string;
@@ -12,12 +11,14 @@ export const InputField: React.FC<InputFieldProps> = ({
   jobName,
   jobLocation,
 }) => {
-  const [keyword, setKeyword] = useState<string>("");
   const router = useRouter();
+  const providedKeyword =
+    typeof router.query.title === "string" ? router.query.title : "";
+  const [keyword, setKeyword] = useState<string>(providedKeyword);
   const submitFunction = async (event: any) => {
     event.preventDefault();
     window.location.reload();
-    window.location.replace(`/search/${keyword}`);
+    window.location.replace(`/v1/search?title=${keyword}&location=remote`);
   };
   return (
     <form onSubmit={submitFunction}>

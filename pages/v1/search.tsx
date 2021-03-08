@@ -6,8 +6,11 @@ import { JobBox } from "../../components/JobBox";
 import { NavBar } from "../../components/NavBar";
 import { TopGraphicalBox } from "../../components/TopGraphicalBox";
 import { sampleData } from "../../utils/types";
+import { useRouter } from "next/router";
 
 const Search: NextPage<{ jobs: sampleData[] }> = ({ jobs }) => {
+  const router = useRouter();
+  console.log(router.query);
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
@@ -35,7 +38,8 @@ const Search: NextPage<{ jobs: sampleData[] }> = ({ jobs }) => {
 };
 
 Search.getInitialProps = async ({ query }) => {
-  const res = await fetch(`${process.env.JobSearchUrl}${query.keyword}`);
+  const [keyword, location] = [query.title, query.location];
+  const res = await fetch(`${process.env.JobSearchUrl}${keyword}`);
 
   const job: sampleData[] = await res.json();
 
