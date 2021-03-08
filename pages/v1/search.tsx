@@ -9,28 +9,35 @@ import { sampleData } from "../../utils/types";
 import { useRouter } from "next/router";
 
 const Search: NextPage<{ jobs: sampleData[] }> = ({ jobs }) => {
-  const router = useRouter();
-  console.log(router.query);
   return (
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
         <NavBar linkTo="/jobs" />
-        <TopGraphicalBox />
+        <Box zIndex="1" position="sticky" top="0">
+          <TopGraphicalBox />
+        </Box>
         <Box maxW="1200px" mx="auto">
           <Text
             marginBottom={5}
             width="max-content"
-            fontFamily="monospace"
+            fontFamily="mono"
             fontWeight="bold"
             fontSize="2xl"
             paddingLeft={["5", "5", "initial"]}
+            color="linkedin.600"
           >
-            We Found These..
+            Jobs for{" "}
+            <Text display="inline" fontStyle="italic">
+              {" "}
+              {router.query.title}
+            </Text>
           </Text>
         </Box>
-        {jobs.map((job) => (
-          <JobBox key={v4()} job={job} />
-        ))}
+        <Box minH="50vh">
+          {jobs.map((job) => (
+            <JobBox key={v4()} job={job} />
+          ))}
+        </Box>
       </Box>
       <Footer alter={false} />
     </Box>
