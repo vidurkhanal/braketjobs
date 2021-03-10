@@ -7,6 +7,7 @@ import { NavBar } from "../components/NavBar";
 import { TopGraphicalBox } from "../components/TopGraphicalBox";
 import { Footer } from "../components/Footer";
 import { v4 } from "uuid";
+import { StickyBox } from "../components/StickyBox";
 
 interface homeProps {
   jobs: Array<sampleData>;
@@ -19,9 +20,9 @@ const Home: React.FC<homeProps> = ({ jobs }) => {
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
         <NavBar linkTo="/" />
-        <Box zIndex="1" position="sticky" top="0">
+        <StickyBox>
           <TopGraphicalBox />
-        </Box>
+        </StickyBox>
         <Box maxW="1200px" mx="auto">
           <Text
             marginBottom={5}

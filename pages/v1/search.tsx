@@ -7,6 +7,7 @@ import { NavBar } from "../../components/NavBar";
 import { TopGraphicalBox } from "../../components/TopGraphicalBox";
 import { sampleData } from "../../utils/types";
 import { useRouter } from "next/router";
+import { StickyBox } from "../../components/StickyBox";
 
 const Search: NextPage<{ jobs: sampleData[] }> = ({ jobs }) => {
   const router = useRouter();
@@ -14,9 +15,9 @@ const Search: NextPage<{ jobs: sampleData[] }> = ({ jobs }) => {
     <Box backgroundColor="hsl(180, 52%, 96%)">
       <Box>
         <NavBar linkTo="/jobs" />
-        <Box zIndex="1" position="sticky" top="0">
+        <StickyBox>
           <TopGraphicalBox />
-        </Box>
+        </StickyBox>
         <Box maxW="1200px" mx="auto">
           <Text
             marginBottom={5}

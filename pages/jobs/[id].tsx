@@ -6,6 +6,7 @@ import Head from "next/head";
 import { anchorExtractor } from "../../utils/anchorExtractor";
 import { Footer } from "../../components/Footer";
 import { NextPage } from "next";
+import { StickyBox } from "../../components/StickyBox";
 
 const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
   return (
@@ -20,7 +21,9 @@ const IndividualJob: NextPage<{ job: sampleData }> = ({ job }) => {
         />
       </Head>
       <NavBar linkTo="/jobs" />
-      <TopGraphicalBox />
+      <StickyBox>
+        <TopGraphicalBox />
+      </StickyBox>
       <Flex paddingX={["5", "5", "20"]} marginBottom="20">
         <Box
           paddingX={["5", "5", "20"]}
